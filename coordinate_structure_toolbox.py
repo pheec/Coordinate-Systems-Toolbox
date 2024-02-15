@@ -86,5 +86,8 @@ class coordinate_structure:
 
         # Set aspect ratio to equal
         ax.set_box_aspect([np.ptp(x_cum), np.ptp(y_cum), np.ptp(z_cum)])
-        plt.legend()
         plt.show()
+
+    def draw_diagram(self) -> None:
+        pass
+
