@@ -4,6 +4,14 @@ from mpl_toolkits.mplot3d import Axes3D
 
 from utils import *
 
+WIDTH = 800
+HEIGHT = 800
+BLACK_COLOR = (0, 0, 0)
+FONT = cv2.FONT_HERSHEY_SIMPLEX 
+FONT_SCALE = 1
+GREEN_COLOR = (255, 0, 0)
+TEXT_THICKNESS = 2
+
 class coordinate_structure:
     def __init__(self) -> None:
         self.transformations = {}
@@ -89,5 +97,33 @@ class coordinate_structure:
         plt.show()
 
     def draw_diagram(self) -> None:
-        pass
+        nodes_list = []
+        for transformation_name, transformation_matrix in self.transformations.items():
+            frame_origin, frame_final = get_frame_names(transformation_name)
+            if frame_origin not in nodes_list:
+                nodes_list.append(frame_origin)
+            if frame_final not in nodes_list:
+                nodes_list.append(frame_final)
+        print(nodes_list)
+
+        image = np.ones((HEIGHT, WIDTH, 3), dtype=np.uint8)*255
+        center = (WIDTH // 2, HEIGHT // 2)
+        radius = min(WIDTH, HEIGHT) // 3
+        n_points = len(nodes_list)
+
+        points = draw_equidistant_points_on_circle(image, center, radius, n_points, BLACK_COLOR)
+
+        nodes = {}
+        for i in range(len(nodes_list)):
+            nodes[nodes_list[i]] = points[i]
+            cv2.putText(image, nodes_list[i], points[i], FONT,  
+                   FONT_SCALE, GREEN_COLOR, TEXT_THICKNESS, cv2.LINE_AA)
+        print(nodes)
+
+        for transformation_name, transformation_matrix in self.transformations.items():
+            frame_origin, frame_final = get_frame_names(transformation_name)
+            cv2.arrowedLine(image, nodes[frame_origin], nodes[frame_final], BLACK_COLOR, 2)
+        cv2.imshow('Equidistant Points on Circle', image)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 

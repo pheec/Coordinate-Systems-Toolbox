@@ -24,9 +24,9 @@ T_base_to_camera = np.array([
                         [0, 0, 0, 1]
                             ])
 
-coord_structure.add_transformation('world', 'base', T_world_to_base)
-coord_structure.add_transformation('base', 'camera', T_base_to_camera)
-coord_structure.add_transformation('table', 'world', T_table_to_world)
+coord_structure.add_transformation('world', 'base', T_world_to_base, False)
+coord_structure.add_transformation('base', 'camera', T_base_to_camera, False)
+coord_structure.add_transformation('table', 'world', T_table_to_world, False)
 
 #coord_structure.print_all()
 
