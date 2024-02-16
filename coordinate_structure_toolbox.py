@@ -48,7 +48,7 @@ class coordinate_structure:
                         [0, factor, 0, 1],  # Y-axis
                         [0, 0, factor, 1]]) # Z-axis
 
-        x_cum, y_cum, z_cum = [], [], []
+        x_cum, y_cum, z_cum = [np.array([factor, 0, 0, 0])], [np.array([0, factor, 0, 0])], [np.array([0, 0, factor, 0])]
         # Plot the axes
         fig = plt.figure()
         ax = fig.add_subplot(111, projection='3d')
@@ -104,7 +104,6 @@ class coordinate_structure:
                 nodes_list.append(frame_origin)
             if frame_final not in nodes_list:
                 nodes_list.append(frame_final)
-        print(nodes_list)
 
         image = np.ones((HEIGHT, WIDTH, 3), dtype=np.uint8)*255
         center = (WIDTH // 2, HEIGHT // 2)
@@ -118,12 +117,11 @@ class coordinate_structure:
             nodes[nodes_list[i]] = points[i]
             cv2.putText(image, nodes_list[i], points[i], FONT,  
                    FONT_SCALE, GREEN_COLOR, TEXT_THICKNESS, cv2.LINE_AA)
-        print(nodes)
 
         for transformation_name, transformation_matrix in self.transformations.items():
             frame_origin, frame_final = get_frame_names(transformation_name)
             cv2.arrowedLine(image, nodes[frame_origin], nodes[frame_final], BLACK_COLOR, 2)
-        cv2.imshow('Equidistant Points on Circle', image)
+        cv2.imshow('Coordinate Frames Structure ', image)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
