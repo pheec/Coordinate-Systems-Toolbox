@@ -1,7 +1,7 @@
 import numpy as np
-from coordinate_structure_toolbox import coordinate_structure
+from coordinate_structure_toolbox import CoordinateStructure
 
-coord_structure = coordinate_structure()
+coord_structure = CoordinateStructure()
 
 T_robot_to_world = np.array([
                         [1, 0, 0, 1],
