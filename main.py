@@ -3,35 +3,37 @@ from coordinate_structure_toolbox import coordinate_structure
 
 coord_structure = coordinate_structure()
 
-T_world_to_base = np.array([
+T_robot_to_world = np.array([
                         [1, 0, 0, 1],
-                        [0, 1, 0, 2],
+                        [0, 1, 0, 0],
                         [0, 0, 1, 0],
                         [0, 0, 0, 1]
                             ])
 
-T_table_to_world = np.array([
-                        [1, 0, 0, 2],
+T_world_to_base = np.array([
+                        [1, 0, 0, 0],
                         [0, 1, 0, 1],
+                        [0, 0, 1, 0],
+                        [0, 0, 0, 1]
+                            ])
+
+T_camera_to_robot = np.array([
+                        [1, 0, 0, 0],
+                        [0, 1, 0, 0],
                         [0, 0, 1, 1],
                         [0, 0, 0, 1]
                             ])
 
-T_base_to_camera = np.array([
-                        [0, 1, 0, 0],
-                        [1, 0, 0, 0],
-                        [0, 0, 1, 3],
-                        [0, 0, 0, 1]
-                            ])
+coord_structure.add_transformation('robot', 'world', T_robot_to_world)
+coord_structure.add_transformation('world', 'base', T_world_to_base)
+coord_structure.add_transformation('camera', 'robot', T_camera_to_robot)
 
-coord_structure.add_transformation('world', 'base', T_world_to_base, True)
-coord_structure.add_transformation('base', 'camera', T_base_to_camera, True)
-coord_structure.add_transformation('table', 'world', T_table_to_world, True)
+coord_structure.plot_all('world')
+#coord_structure.draw_diagram()
 
 coord_structure.print_all()
 
-T = coord_structure.get('base', 'world')
-print(T)
+#T = coord_structure.get('base', 'world')
+#print(T)
 
-coord_structure.plot_all('world')
-coord_structure.draw_diagram()
+
