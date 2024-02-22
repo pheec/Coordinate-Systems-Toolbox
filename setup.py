@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='coordinate_structure_toolbox',
+    name='coordinate_systems_toolbox',
     version='0.1.0',
     author='Tomáš Fiala',
     author_email='your.email@example.com', #TODO change

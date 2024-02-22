@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import numpy as np
-from coordinate_structure_toolbox import CoordinateStructure
+from coordinate_systems_toolbox import CoordinateStructure
 
 
 if __name__ == '__main__':
