@@ -13,7 +13,7 @@ FONT = cv2.FONT_HERSHEY_SIMPLEX
 FONT_SCALE = 1
 TEXT_THICKNESS = 2
 
-class coordinate_structure:
+class CoordinateStructure:
     def __init__(self) -> None:
         self.transformations = {}
 
