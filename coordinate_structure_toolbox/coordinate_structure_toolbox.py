@@ -1,9 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-import copy
 
-from utils import *
+from .utils import * #TODO remove after removing OpenCV dependency
+from .utils import get_frame_names, draw_equidistant_points_on_circle
+
 
 WIDTH = 800
 HEIGHT = 800
@@ -139,7 +142,7 @@ class CoordinateStructure:
 
     def draw_diagram(self) -> None:
         nodes_list = []
-        for transformation_name, transformation_matrix in self.transformations.items():
+        for transformation_name, _ in self.transformations.items():
             frame_origin, frame_final = get_frame_names(transformation_name)
             if frame_origin not in nodes_list:
                 nodes_list.append(frame_origin)
@@ -159,7 +162,7 @@ class CoordinateStructure:
             cv2.putText(image, nodes_list[i], points[i], FONT,  
                    FONT_SCALE, BLACK_COLOR, TEXT_THICKNESS, cv2.LINE_AA)
 
-        for transformation_name, transformation_matrix in self.transformations.items():
+        for transformation_name, _ in self.transformations.items():
             frame_origin, frame_final = get_frame_names(transformation_name)
             cv2.arrowedLine(image, nodes[frame_origin], nodes[frame_final], BLUE_COLOR, 2)
         cv2.imshow('Coordinate Frames Structure ', image)
