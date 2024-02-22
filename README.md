@@ -14,6 +14,7 @@ graph LR
 A((A)) -- T_a_to_b --> B((B)) 
 ```
 ## Chain rule
+We have coordinate systems A, B, C, and D and corresponding transformations $T^a_b$ (T_a_to_b), $T^b_c$ (T_b_to_c), $T^c_d$ (T_c_to_c). 
 
 ```mermaid
 graph LR
@@ -22,9 +23,7 @@ A((A)) -- T_a_to_b --> B((B)) -- T_b_to_c --> C((C)) -- T_c_to_d --> D((D))
 A((A)) -- T_a_to_d --> D((D))
 ```
 
-Here, we have points represented by letters A, B, C, and D, corresponding to different coordinate systems. The transformations $T_{a\rightarrow b}$, $T_{b\rightarrow c}$, and $T_{c\rightarrow d}$ represent the transformations from coordinate system A to B, B to C, and C to D respectively.
-
-To find the transformation directly from coordinate system A to D ($T_{a\rightarrow d}$), we can apply the chain rule. Instead of finding a direct transformation from A to D, we can find transformations from A to intermediate systems (B, C) and then from those intermediate systems to D.
+To find the transformation directly from coordinate system A to D, which we denote as $T^a_d$ or (T_a_to_d) in code, we can apply the chain rule. Instead of finding a direct transformation from A to D, we can find transformations from A to intermediate systems (B, C) and then from those intermediate systems to D.
 
 This can be mathematically expressed as:
 
