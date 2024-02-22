@@ -34,3 +34,6 @@ In code, this would be represented as:
 TODO
 
 This chain rule simplifies the process of finding transformations between distant coordinate systems by breaking it down into smaller, manageable steps. It's particularly useful in situations where direct transformations between distant coordinate systems are not readily available or are complex to compute.
+
+# Instalation
+pip install git+https://github.com/pheec/Coordinate-Systems-Toolbox.git
