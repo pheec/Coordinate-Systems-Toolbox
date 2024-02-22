@@ -14,7 +14,7 @@ graph LR
 A((A)) -- T_a_to_b --> B((B)) 
 ```
 ## Chain rule
-We have coordinate systems A, B, C, and D and corresponding transformations $T^a_b$ (T_a_to_b), $T^b_c$ (T_b_to_c), $T^c_d$ (T_c_to_c). 
+We have coordinate systems A, B, C, and D and corresponding transformations $T^a_b$ (T_a_to_b), $T^b_c$ (T_b_to_c), $T^c_d$ (T_c_to_d). 
 
 ```mermaid
 graph LR
